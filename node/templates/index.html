@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<head>
+		<title>Minimalism is life</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="./css/index.css">
+		<script src="js/my_scripts.js" async="" defer=""></script>
+	</head>
+
+	<body style="position: relative;">
+	<h2 id="status"></h2>
+		<div class="buttons">
+				<div id="getChainLength">
+					<button onclick="getChainLen(createCORSRequest('GET', 'http://127.0.0.1:5000/chain/length'));">chain_length</button>
+					<h2 id="place_for_chain_length"></h2>
+				</div>
+
+				<div id="getChain">
+					<button onclick="getChain(createCORSRequest('GET', 'http://127.0.0.1:5000/chain'));">get_blocks</button>
+					<table>
+						<tbody id="place_for_chain"></tbody>
+					</table>
+				</div>
+		</div>
+
+	<input type="text" id="myInputBlockHeight" onkeypress="getBlockByHeight(createCORSRequest('GET','http://127.0.0.1:5000/block?height=' + document.getElementById('myInputBlockHeight').value))" placeholder="Search for block.." title="Type in a name">
+	<table>
+		<tbody id="place_for_block_height"></tbody>
+	</table>
+
+
+	<input type="text" id="myInputBalanceWallet" onkeypress="getBalanceWallet(createCORSRequest('GET', 'http://127.0.0.1:5000/balance?addr=' + document.getElementById('myInputBalanceWallet').value))" placeholder="Search for wallets.." title="Type in a name">
+		<h2 id="place_for_balance"></h2>
+
+	<input type="text" id="myInputBlockHash" onkeypress="getBlockByHash(createCORSRequest('GET', 'http://127.0.0.1:5000/hash?hash=' + document.getElementById('myInputBlockHash').value))" placeholder="Search for hash.." title="Type in a name">
+	<table>
+		<tbody id="place_for_block_by_hash"></tbody>
+	</table>
+
+	</body>
+</html>
